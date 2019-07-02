@@ -23,13 +23,23 @@ private void Awake()
 }
 ```
 ```
-public Poolable original;
-private IPool<Poolable> p;
+public class Bullet : Poolable<Bullet>
+{
+  private void OnHit()
+  {
+    Pool.ActivateOne()
+  }
+}
+
+public Bullet original;
+private IPool<Bullet> p;
 
 
 private void Awake()
 {
   p = Pool.OfPoolable(original);
-  p.ActivateOne(new Vector3(0, 0, 0), Quaternion.identity);
+  var instance = p.ActivateOne(new Vector3(0, 0, 0), Quaternion.identity);
+  var original = instance.Original; // Original prefab of instance
+  var pool = instance.Pool // Pool of instance
 }
 ```
