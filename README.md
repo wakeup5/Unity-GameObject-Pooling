@@ -1,6 +1,6 @@
 ## Install
 1. Window > Package Manager
-2. + > Add package from git URL...
+2. Click '+' button > Add package from git URL...
 3. Copy and paste '''https://github.com/wakeup5/UnityGameObjectPooling.git'''
 4. Done.
 
