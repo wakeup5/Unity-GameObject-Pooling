@@ -1,5 +1,5 @@
 {
-    "name": "me.waker.gameobject_pooling",
+    "name": "me.waker.gop",
     "displayName": "Waker's GameObject Pooling",
     "version": "0.1.5",
     "unity": "2017.1",
