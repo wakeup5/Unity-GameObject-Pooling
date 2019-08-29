@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace Waker
 {
-  public class Poolable : Poolable<Poolable>
+	public class Poolable : Poolable<Poolable>
 	{
-	
+
 	}
 }

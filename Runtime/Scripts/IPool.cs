@@ -2,8 +2,8 @@ using UnityEngine;
 
 namespace Waker
 {
-	public interface IPool<T> {
-
+	public interface IPool<T>
+	{
 		T Original { get; }
 
 		T ActivateOne();

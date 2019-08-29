@@ -1,7 +1,7 @@
 namespace Waker
 {
-  public interface IPoolable
-  {
+	public interface IPoolable
+	{
 
-  }
+	}
 }
