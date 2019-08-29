@@ -1,0 +1,12 @@
+{
+    "name": "me.waker.gameobjectpooling",
+    "displayName": "GameObject Pooling",
+    "version": "0.0.1",
+    "unity": "2017.1",
+    "description": "",
+    "keywords": [
+        "pooling",
+        "unity"
+    ],
+    "category": "Unity"
+}
