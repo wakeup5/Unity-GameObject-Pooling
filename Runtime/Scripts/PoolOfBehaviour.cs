@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace MountainOutside
+namespace Waker
 {
 	public partial class PoolOfBehaviour<T> : IPool<T> where T : MonoBehaviour
 	{

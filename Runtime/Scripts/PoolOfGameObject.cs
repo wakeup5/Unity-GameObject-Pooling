@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MountainOutside
+namespace Waker
 {
 	// Pool of GameObject
 	public partial class PoolOfGameObject : IPool<GameObject>

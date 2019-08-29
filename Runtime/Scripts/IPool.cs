@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace MountainOutside
+namespace Waker
 {
 	public interface IPool<T> {
 
