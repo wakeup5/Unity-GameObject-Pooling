@@ -1,5 +1,12 @@
+## Install
+1. Window > Package Manager
+2. + > Add package from git URL...
+3. Copy and paste '''https://github.com/wakeup5/UnityGameObjectPooling.git'''
+4. Done.
+
 ## Use
 ```
+// for GameObject
 public GameObject original;
 private IPool<GameObject> p;
 
@@ -11,6 +18,7 @@ private void Awake()
 }
 ```
 ```
+// for UI Element.
 public Text original;
 public RectTransform parent
 private IPool<Text> p;
@@ -18,11 +26,12 @@ private IPool<Text> p;
 
 private void Awake()
 {
-  p = Pool.OfBehaviour(original, 5, parent);
+  p = Pool.OfBehaviour(original, 5, parent); // need UI's RectTransform parent.
   p.ActivateOne();
 }
 ```
 ```
+// for Poolable Component.
 public class Bullet : Poolable<Bullet>
 {
   private void OnHit()
