@@ -1,4 +1,4 @@
-using MountainOutside;
+using Waker;
 using UnityEngine;
 
 namespace Waker
