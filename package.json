@@ -1,7 +1,7 @@
 {
     "name": "me.waker.gameobjectpooling",
     "displayName": "GameObject Pooling",
-    "version": "0.0.3",
+    "version": "0.1.4",
     "unity": "2017.1",
     "description": "",
     "keywords": [
