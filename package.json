@@ -1,7 +1,7 @@
 {
     "name": "me.waker.gop",
     "displayName": "Waker's GameObject Pooling",
-    "version": "0.1.5",
+    "version": "0.1.6",
     "unity": "2017.1",
     "description": "",
     "keywords": [
