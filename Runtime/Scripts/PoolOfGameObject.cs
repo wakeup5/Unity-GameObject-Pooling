@@ -24,7 +24,7 @@ namespace Waker
 			}
 		}
 
-		public GameObject ActivateOne()
+		public GameObject ActivateOne(System.Action<GameObject> beforeActivation = null)
 		{
 			GameObject result = null;
 			foreach (GameObject obj in pool)
@@ -41,11 +41,14 @@ namespace Waker
 				result = Object.Instantiate<GameObject>(this.Original, this.parent);
 				pool.Add(result);
 			}
+
+			beforeActivation?.Invoke(result);
+
 			result.SetActive(true);
 			return result;
 		}
 
-		public GameObject ActivateOne(Vector3 position, Quaternion rotation)
+		public GameObject ActivateOne(Vector3 position, Quaternion rotation, System.Action<GameObject> beforeActivation = null)
 		{
 			GameObject result = ActivateOne();
 			result.transform.SetPositionAndRotation(position, rotation);
