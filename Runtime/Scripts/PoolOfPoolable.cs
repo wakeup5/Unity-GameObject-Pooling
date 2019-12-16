@@ -27,7 +27,7 @@ namespace Waker
 			}
 		}
 
-		public T ActivateOne()
+		public T ActivateOne(System.Action<T> beforeActivation = null)
 		{
 			T result = null;
 
@@ -41,11 +41,13 @@ namespace Waker
 				result = container.Dequeue();
 			}
 
+			beforeActivation?.Invoke(result);
+
 			result.gameObject.SetActive(true);
 			return result;
 		}
 
-		public T ActivateOne(Vector3 position, Quaternion rotation)
+		public T ActivateOne(Vector3 position, Quaternion rotation, System.Action<T> beforeActivation = null)
 		{
 			T result = ActivateOne();
 			result.transform.SetPositionAndRotation(position, rotation);
