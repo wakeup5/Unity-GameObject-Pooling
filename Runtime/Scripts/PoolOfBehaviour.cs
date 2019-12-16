@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Waker
@@ -23,7 +23,7 @@ namespace Waker
 			}
 		}
 
-		public T ActivateOne()
+		public T ActivateOne(System.Action<T> beforeActivation = null)
 		{
 			T result = null;
 			foreach (T obj in pool)
@@ -39,13 +39,16 @@ namespace Waker
 				result = Object.Instantiate<T>(this.Original, this.parent);
 				pool.Add(result);
 			}
+
+			beforeActivation?.Invoke(result);
+			
 			result.gameObject.SetActive(true);
 			return result;
 		}
 
-		public T ActivateOne(Vector3 position, Quaternion rotation)
+		public T ActivateOne(Vector3 position, Quaternion rotation, System.Action<T> beforeActivation = null)
 		{
-			T result = ActivateOne();
+			T result = ActivateOne(beforeActivation);
 			result.transform.SetPositionAndRotation(position, rotation);
 			return result;
 		}
