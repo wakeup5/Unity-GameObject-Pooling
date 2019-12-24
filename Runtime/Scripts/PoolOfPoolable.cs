@@ -15,7 +15,7 @@ namespace Waker
 		{
 			this.Original = original ?? throw new System.ArgumentNullException("In pooling the original can not be null.");
 			this.Original.gameObject.SetActive(false);
-			this.parent = parent ?? FindOrCreateParent(original.name);
+			this.parent = parent ?? Pool.FindOrCreateParent(original.name);
 			this.container = new Queue<T>();
 
 			for (int i = 0; i < capacity; i++)
@@ -57,25 +57,6 @@ namespace Waker
 		public void Withdraw(T poolable)
 		{
 			container.Enqueue(poolable);
-		}
-
-		private static Transform FindOrCreateParent(string originalName)
-		{
-			if (Pool.poolRoot == null)
-			{
-				Pool.poolRoot = new GameObject("Pools").transform;
-			}
-
-			string name = string.Format("Pool-{0}", originalName);
-			Transform p = Pool.poolRoot.Find(name);
-
-			if (p == null)
-			{
-				p = new GameObject(name).transform;
-				p.parent = Pool.poolRoot;
-			}
-
-			return p;
 		}
 	}
 }
