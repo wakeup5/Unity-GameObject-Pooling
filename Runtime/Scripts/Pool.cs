@@ -72,6 +72,7 @@ namespace Waker
 			if (poolRoot == null)
 			{
 				poolRoot = new GameObject("Pools").transform;
+				Object.DontDestroyOnLoad(poolRoot.gameObject);
 			}
 
 			string name = string.Format("Pool-{0}", originalName);
