@@ -10,17 +10,23 @@ namespace Waker
 
 		public T Original { get; }
 
-		public PoolOfBehaviour(T original, int capacity = 5, Transform parant = null)
+		public PoolOfBehaviour(T original, int capacity = 5, Transform parent = null)
 		{
 			this.Original = original ?? throw new System.ArgumentNullException("In pooling the original can not be null.");
 			this.Original.gameObject.SetActive(false);
-			this.parent = parant ?? Pool.FindOrCreateParent(original.name);
+			this.parent = parent ?? Pool.FindOrCreateParent(original.name);
 			this.pool = new List<T>();
 
 			for (int i = 0; i < capacity; i++)
 			{
 				this.pool.Add(Object.Instantiate<T>(this.Original, this.parent));
 			}
+
+			var e =
+				this.parent.GetComponent<DestroyPoolOfLifeCycle>() ??
+				this.parent.gameObject.AddComponent<DestroyPoolOfLifeCycle>();
+
+			e.Regist(original.GetInstanceID());
 		}
 
 		public T One(bool activate = true)
@@ -59,6 +65,11 @@ namespace Waker
 			}
 
 			return result;
+		}
+
+		public void Dispose()
+		{
+			Object.Destroy(parent);
 		}
 	}
 }

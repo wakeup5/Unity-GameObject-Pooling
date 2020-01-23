@@ -94,5 +94,16 @@ namespace Waker
 
 			return p;
 		}
+
+		public static void DestroyPool(int id)
+		{
+			if (pools.TryGetValue(id, out object result))
+			{
+				var pool = result as System.IDisposable;
+				pool.Dispose();
+
+				pools.Remove(id);
+			}
+		}
 	}
 }

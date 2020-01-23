@@ -22,6 +22,12 @@ namespace Waker
 			{
 				this.pool.Add(Object.Instantiate<GameObject>(this.Original, this.parent));
 			}
+
+			var e =
+				this.parent.GetComponent<DestroyPoolOfLifeCycle>() ??
+				this.parent.gameObject.AddComponent<DestroyPoolOfLifeCycle>();
+
+			e.Regist(original.GetInstanceID());
 		}
 
 		public GameObject One(bool activate = true)
@@ -61,6 +67,11 @@ namespace Waker
 			}
 
 			return result;
+		}
+
+		public void Dispose()
+		{
+			Object.Destroy(parent);
 		}
 	}
 }
