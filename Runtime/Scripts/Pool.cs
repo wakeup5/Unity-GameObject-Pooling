@@ -7,7 +7,15 @@ namespace Waker
 	{
 		internal static Transform poolRoot;
 
-		private static Dictionary<int, object> pools = new Dictionary<int, object>();
+		private static Dictionary<int, object> pools;
+		
+		[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+		private static void RuntimeInitializeOnLoad()
+		{
+			Debug.Log("[Pool] Initialize pool.");
+			poolRoot = null;
+			pools = new Dictionary<int, object>();
+		}
 
 		public static IPool<T> OfPoolable<T>(T original, int capacity = 5) where T : Poolable<T>
 		{
