@@ -6,8 +6,8 @@ namespace Waker
 	{
 		T Original { get; }
 
-		T ActivateOne(System.Action<T> beforeActivation = null);
+		T One(bool activate = true);
 
-		T ActivateOne(Vector3 position, Quaternion rotation, System.Action<T> beforeActivation = null);
+		T One(Vector3 position, Quaternion rotation, bool activate = true);
 	}
 }

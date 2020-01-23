@@ -23,7 +23,7 @@ namespace Waker
 			}
 		}
 
-		public T ActivateOne(System.Action<T> beforeActivation = null)
+		public T One(bool activate = true)
 		{
 			T result = null;
 			foreach (T obj in pool)
@@ -40,16 +40,24 @@ namespace Waker
 				pool.Add(result);
 			}
 
-			beforeActivation?.Invoke(result);
-			
-			result.gameObject.SetActive(true);
+			if (activate)
+			{
+				result.gameObject.SetActive(true);
+			}
+
 			return result;
 		}
 
-		public T ActivateOne(Vector3 position, Quaternion rotation, System.Action<T> beforeActivation = null)
+		public T One(Vector3 position, Quaternion rotation, bool activate = true)
 		{
-			T result = ActivateOne(beforeActivation);
+			T result = One(false);
 			result.transform.SetPositionAndRotation(position, rotation);
+
+			if (activate)
+			{
+				result.gameObject.SetActive(true);
+			}
+
 			return result;
 		}
 	}
