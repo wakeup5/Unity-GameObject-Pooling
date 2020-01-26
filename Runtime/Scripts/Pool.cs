@@ -56,7 +56,7 @@ namespace Waker
 			return n;
 		}
 
-		public static IPool<GameObject> OfGameObject(GameObject original, int capacity = 5)
+		public static IPool<GameObject> OfGameObject(GameObject original, int capacity = 5, Transform parents = null)
 		{
 			if (original == null)
 			{
@@ -70,7 +70,7 @@ namespace Waker
 				return result as IPool<GameObject>;
 			}
 
-			IPool<GameObject> n = new PoolOfGameObject(original, capacity);
+			IPool<GameObject> n = new PoolOfGameObject(original, capacity, parents);
 			pools.Add(id, n);
 			return n;
 		}
