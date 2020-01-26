@@ -11,11 +11,11 @@ namespace Waker
 
 		public GameObject Original { get; }
 
-		public PoolOfGameObject(GameObject original, int capacity = 5)
+		public PoolOfGameObject(GameObject original, int capacity = 5, Transform parent = null)
 		{
 			this.Original = original ?? throw new System.ArgumentNullException("In pooling the original can not be null.");
 			this.Original.SetActive(false);
-			this.parent = Pool.FindOrCreateParent(original.name);
+			this.parent = parent ?? Pool.FindOrCreateParent(original.name);
 			this.pool = new List<GameObject>();
 
 			for (int i = 0; i < capacity; i++)
